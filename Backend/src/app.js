@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express(); // creating instance of server
 const notesModel = require("./models/notes.model.js");
+const cors = require("cors")
+app.use(cors()) //server starts accepting cross origin request
 app.use(express.json()); // middleware used to get requet from body to the server in an readable format to the server
 
 // now Creating API for notes
