@@ -21,15 +21,15 @@ form{
 }
 form input{
   outline-color: transparent;
-  padding: 0.6vw;
-  font-size: 1.6vw;
+  padding: 1vw;
+  font-size: 2vw;
   border-radius: 0.4vw;
 }
 form button{
-  padding: 0.6vw;
+  padding: 0.8vw;
   border: none;
   outline: none;
-  font-size: 1vw;
+  font-size: clamp(20px,1.3vw,60px);
   background-color: blue;
   color: rgba(255, 255, 255, 0.656);
   border-radius: 0.4vw;
@@ -47,6 +47,8 @@ form button:active{
   gap: 1rem;
   padding-block: 1rem;
   padding-inline: 3rem;
+  margin-left: auto;
+  justify-content: center;
 
 }
 .note{
@@ -62,13 +64,14 @@ form button:active{
 
 }
 .note button{
-  padding: 0.6vw;
+  padding-inline: 3vw;
+  padding-block: 1vw;
   border: none;
   outline: none;
-  font-size: 1vw;
+  font-size: clamp(20px,1.3vw,60px);
   background-color: rgb(223, 12, 12);
   color: rgba(255, 255, 255, 0.656);
-  border-radius: 0.4vw;
+  border-radius: 0.6vw;
   transition: all ease 0.6s;
 }
 .note button:active{
@@ -76,7 +79,11 @@ form button:active{
     background-color: rgb(197, 10, 44);
 }
 .Update{
-  padding: 0.6vw !important;
+  padding-inline: 3vw;
+  padding-block: 1vw;
+  border: none;
+  outline: none;
+  font-size: 3.6vw;
   border: none;
   outline: none;
   font-size: 1vw;
@@ -121,6 +128,7 @@ border-radius: 0.2vw;
 font-size: 1vw;
 }
 .UpdationForm button{
+  font-size: clamp(20px,1.3vw,60px);
   outline: none;
   border: none;
   background-color: #22c55e;
