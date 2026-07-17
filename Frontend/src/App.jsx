@@ -1,45 +1,64 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 const App = () => {
- const [notes, setnotes] = useState([
-  {
-    title:"test title 1",
-    description:"test description"
+  const [notes, setnotes] = useState([]);
+
+  function fetchingNotes() {
+    axios.get(" http://localhost:3000/api/notes")
+      .then((res) => {
+        console.log("Fetching notes");
+        setnotes(res.data.notes);
+      })
   }
-  ,
-    {
-    title:"test title 2",
-    description:"test description"
+
+  function handelSubmit(e) {
+    e.preventDefault();
+
+    const { title, description } = e.target.elements;
+    console.log(title.value, description.value);
+    axios.post(" http://localhost:3000/api/notes", {
+      title: title.value,
+      description: description.value
+    })
+      .then((res) => {
+        console.log(res.data);
+        fetchingNotes();
+
+      })
+
   }
-  ,
-    {
-    title:"test title 3",
-    description:"test description"
-  }
-  ,
-    {
-    title:"test title 4",
-    description:"test description"
-  }
- ])
-axios.get(" http://localhost:3000/api/notes")
-.then((res)=>{
-  console.log();
   
-  setnotes(res.data.notes);
-})
+  function handelDeletenote(noteId){
+    axios.delete(`http://localhost:3000/api/notes/${noteId}`)
+    .then(()=>{
+      fetchingNotes();
+    })
+  }
+  useEffect(() => {
+    fetchingNotes();
+  }, [])
+
   return (
     <>
-    <div className="notes">
-      {notes.map((note)=>{
+      <form className='note-creation-form' onSubmit={handelSubmit}>
+        <input name='title' type="text" placeholder='Enter title' />
+        <input name='description' type="text" placeholder='Enter description' />
+        <button>Create note</button>
+      </form>
 
-        return <div className="note">
-        <h1>{note.title}</h1>
-        <p>{note.description}</p>
+      <div className="notes">
+        {notes.map((note) => {
+
+          return <div className="note">
+            <h1>{note.title}</h1>
+            <p>{note.description}</p>
+            <button onClick={()=>{
+              handelDeletenote(note._id)
+            }}>delete</button>
+          </div>
+        })}
+
       </div>
-      })}
- 
-    </div>
     </>
   )
 }

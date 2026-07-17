@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express(); // creating instance of server
 const notesModel = require("./models/notes.model.js");
-const cors = require("cors")
+const cors = require("cors");
+const path = require("path");
 app.use(cors()) //server starts accepting cross origin request
 app.use(express.json()); // middleware used to get requet from body to the server in an readable format to the server
+app.use(express.static("./public"))
 
 // now Creating API for notes
 
@@ -56,6 +58,13 @@ app.patch("/api/notes/:id",async (req,res)=>{
   res.status(200).json({
     message:"Updated Sucessfully!"
   })
+})
+
+
+// __dirname give path of my file in which this code is written 
+// * is wild card route  =>helps to handel those api's which are not created by us
+app.use('*name',(req,res)=>{
+  res.sendFile(path.join(__dirname, ".." , "/public/index.html" ))
 })
 module.exports = app
 
