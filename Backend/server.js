@@ -7,7 +7,7 @@ dns.setServers(["8.8.8.8","8.8.4.4"]);
 ConnectingToDatabase();    
 
 app.listen(3000,(req,res)=>{
-    console.log(`Live on ${process.env.PORT} port`);
+    console.log(`Live on 3000 port`);
 })
 
 //main function of this file is to start the sercer and establish connection with data basE
