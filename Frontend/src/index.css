@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 html, body,#root {
@@ -10,7 +11,34 @@ html, body,#root {
 }
 html{
   background-color: rgb(0, 0, 0);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+form{
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+}
+form input{
+  outline-color: transparent;
+  padding: 0.6vw;
+  font-size: 1.6vw;
+  border-radius: 0.4vw;
+}
+form button{
+  padding: 0.6vw;
+  border: none;
+  outline: none;
+  font-size: 1vw;
+  background-color: blue;
+  color: rgba(255, 255, 255, 0.656);
+  border-radius: 0.4vw;
+  transition: all ease 0.6s;
+}
+
+form button:active{
+  scale: 0.95;
+  background-color: rgb(10, 10, 197);
 }
 
 .notes{
@@ -19,18 +47,82 @@ html{
   gap: 1rem;
   padding-block: 1rem;
   padding-inline: 3rem;
-}
 
+}
 .note{
   background-color: rgb(69, 64, 64);
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 0.7rem;
   max-width: 20rem;
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:1.3vw;
+
+}
+.note button{
+  padding: 0.6vw;
+  border: none;
+  outline: none;
+  font-size: 1vw;
+  background-color: rgb(223, 12, 12);
+  color: rgba(255, 255, 255, 0.656);
+  border-radius: 0.4vw;
+  transition: all ease 0.6s;
+}
+.note button:active{
+    scale: 0.95;
+    background-color: rgb(197, 10, 44);
+}
+.Update{
+  padding: 0.6vw !important;
+  border: none;
+  outline: none;
+  font-size: 1vw;
+  background-color: green !important;
+  color: rgba(255, 255, 255, 0.656);
+  border-radius: 0.4vw;
+  transition: all ease 0.6s;
+}
+
+ .Update:active{
+    scale: 0.95;
+    background-color: rgb(125, 176, 15) !important;
 }
 .note-creation-form{
   display: flex;
   gap:1rem;
   padding-inline:3rem;
   padding-block: 1rem;
+}
+.UpdationForm{
+  background-color: gray;
+  padding: 1vw;
+  position:absolute; 
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  gap: 1vw;
+  border-radius: 0.5vw;
+}
+.UpdationForm h1{
+  text-decoration: underline;
+  font-weight: 500;
+
+}
+
+.UpdationForm textarea{
+ outline: none;
+width: 20vw;
+height: 20vw;
+border-radius: 0.2vw;
+font-size: 1vw;
+}
+.UpdationForm button{
+  outline: none;
+  border: none;
+  background-color: #22c55e;
+  color: #ffffff;
 }

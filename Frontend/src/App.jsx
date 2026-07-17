@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import UpdationForm from './UpdationForm';
 const App = () => {
   const [notes, setnotes] = useState([]);
-
+  const [id, setid] = useState();
+  const [UpdateForm, setUpdateform] = useState({
+    UpdationForm:false
+  })
   function fetchingNotes() {
     axios.get(" http://localhost:3000/api/notes")
       .then((res) => {
@@ -34,12 +38,27 @@ const App = () => {
       fetchingNotes();
     })
   }
+
+  function UpationState(){
+    setUpdateform({
+      UpdationForm:!UpdateForm.UpdationForm
+    })
+    fetchingNotes();
+  }
+   function OpeningUpdateWindow(id){
+    console.log(id,"opeing updation window");
+ UpationState();
+           setid(id);
+   
+   }
   useEffect(() => {
     fetchingNotes();
   }, [])
 
   return (
     <>
+  
+    { UpdateForm.UpdationForm && <UpdationForm  id={id} UpationState={UpationState} />}
       <form className='note-creation-form' onSubmit={handelSubmit}>
         <input name='title' type="text" placeholder='Enter title' />
         <input name='description' type="text" placeholder='Enter description' />
@@ -55,10 +74,15 @@ const App = () => {
             <button onClick={()=>{
               handelDeletenote(note._id)
             }}>delete</button>
+
+            <button className='Update' onClick={()=>{
+              OpeningUpdateWindow(note._id)
+            }}>Update</button>
           </div>
         })}
 
       </div>
+     
     </>
   )
 }

@@ -6,6 +6,7 @@ const path = require("path");
 app.use(cors()) //server starts accepting cross origin request
 app.use(express.json()); // middleware used to get requet from body to the server in an readable format to the server
 app.use(express.static("./public"))
+// app.use(express.static("./src"))
 
 // now Creating API for notes
 
@@ -68,4 +69,4 @@ app.use('*name',(req,res)=>{
 })
 module.exports = app
 
-// creating server 
+// creating server  
