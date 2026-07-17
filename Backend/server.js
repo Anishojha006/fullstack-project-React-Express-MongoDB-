@@ -6,7 +6,7 @@ dns.setServers(["8.8.8.8","8.8.4.4"]);
 
 ConnectingToDatabase();    
 
-app.listen(process.env.PORT,(req,res)=>{
+app.listen(3000,(req,res)=>{
     console.log(`Live on ${process.env.PORT} port`);
 })
 
