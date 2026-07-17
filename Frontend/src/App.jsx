@@ -8,7 +8,7 @@ const App = () => {
     UpdationForm:false
   })
   function fetchingNotes() {
-    axios.get(" http://localhost:3000/api/notes")
+    axios.get(" https://fullstack-project-react-express-mongodb.onrender.com/api/notes")
       .then((res) => {
         console.log("Fetching notes");
         setnotes(res.data.notes);
@@ -20,7 +20,7 @@ const App = () => {
 
     const { title, description } = e.target.elements;
     console.log(title.value, description.value);
-    axios.post(" http://localhost:3000/api/notes", {
+    axios.post("https://fullstack-project-react-express-mongodb.onrender.com/api/notes", {
       title: title.value,
       description: description.value
     })
@@ -33,7 +33,7 @@ const App = () => {
   }
   
   function handelDeletenote(noteId){
-    axios.delete(`http://localhost:3000/api/notes/${noteId}`)
+    axios.delete(`https://fullstack-project-react-express-mongodb.onrender.com/api/notes/${noteId}`)
     .then(()=>{
       fetchingNotes();
     })
